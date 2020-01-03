@@ -24,6 +24,12 @@ spec:
       containers:
       - name: demo
         image: rafabene/demo
+        readinessProbe:
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+          httpGet:
+            path: /health
+            port: 3000
         env:
         - name: VERSION
           value: "V2"

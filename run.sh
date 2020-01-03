@@ -10,5 +10,5 @@ fi
 
 while true
 do curl $url
-sleep .5
+sleep .2
 done

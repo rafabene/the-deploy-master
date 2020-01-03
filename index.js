@@ -13,7 +13,8 @@ app.get('/health', function (req, res){
 })
 
 app.get('/api', function(request, response) {
-    response.send(`Hello ${version} from "${os.hostname}": ${++cont}`)
+    response.set('Connection', 'close')
+    response.send(`Hello ${version} from "${os.hostname}": ${++cont}\n`)
     console.log(`Request ${cont} received`)
 })
 

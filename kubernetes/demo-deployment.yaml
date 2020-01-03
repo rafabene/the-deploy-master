@@ -8,7 +8,7 @@ metadata:
     version: v1
     demo: the-deploy-master
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: demo
@@ -24,6 +24,12 @@ spec:
       containers:
       - name: demo
         image: rafabene/demo
+        readinessProbe:
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+          httpGet:
+            path: /health
+            port: 3000
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000

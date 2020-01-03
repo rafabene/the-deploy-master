@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: demo
+  name: demo
+  labels:
+    app: demo
+    demo: the-deploy-master
+spec:
+  selector:
+    app: demo
+    demo: the-deploy-master
+  type: NodePort
+  ports:
+  - protocol: TCP
+    name: http-3000
+    port: 3000
+    targetPort: 3000

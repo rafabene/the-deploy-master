@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: demo
+  name: demo-v2
+  labels:
+    app: demo
+    version: v2
+    demo: the-deploy-master
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+      version: v2
+      demo: the-deploy-master
+  template:
+    metadata:
+      labels:
+        app: demo
+        version: v2
+        demo: the-deploy-master
+    spec:
+      containers:
+      - name: demo
+        image: rafabene/demo
+        env:
+        - name: VERSION
+          value: "V2"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+          name: http-3000
+          protocol: TCP
